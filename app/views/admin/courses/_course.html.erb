@@ -1,13 +1,54 @@
-<div id="<%= dom_id course %>" class="max-w-xs rounded overflow-hidden shadow-lg">
+<div id="<%= dom_id course %>" class="max-w-xs rounded overflow-hidden shadow-lg bg-white">
   <% if course.image.present? %>
     <%= image_tag course.image, class: "w-full" %>
   <% else %>
-    <%= image_tag("https://via.placeholder.com/320x180") %>
+    <%= image_tag("https://via.placeholder.com/320x180", class: "w-full") %>
   <% end %>
 
-  <div class="px-4 py-4">
-    <div class="font-bold text-xl mb-6"><%= course.title %></div>
-    <%= link_to "Edit Course", edit_admin_course_path(course), class: "bg-red-500 hover:bg-red-700 text-white-50 font-bold py-2 px-4 rounded" %>
-    <%= link_to "View Lessons", admin_course_lessons_path(course), class: "bg-blue-500 hover:bg-blue-700 text-white-50 font-bold py-2 px-4 rounded" %>
+  <div class="px-6 py-4">
+    <div class="font-bold text-2xl text-gray-800 mb-4"><%= course.title %></div>
+    <div class="flex justify-between">
+      <%= link_to "Edit Course", edit_admin_course_path(course), class: "bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-full transition duration-300 ease-in-out" %>
+      <%= link_to "View Lessons", admin_course_lessons_path(course), class: "bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full transition duration-300 ease-in-out" %>
+    </div>
   </div>
 </div>
+
+<style>
+  .max-w-xs {
+    max-width: 320px;
+  }
+  .shadow-lg {
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+  }
+  .rounded {
+    border-radius: 0.5rem;
+  }
+  .bg-white {
+    background-color: #ffffff;
+  }
+  .text-gray-800 {
+    color: #2d3748;
+  }
+  .transition {
+    transition: all 0.3s ease;
+  }
+  .duration-300 {
+    transition-duration: 300ms;
+  }
+  .ease-in-out {
+    transition-timing-function: ease-in-out;
+  }
+  .hover\:bg-red-600:hover {
+    background-color: #c53030;
+  }
+  .hover\:bg-blue-600:hover {
+    background-color: #2b6cb0;
+  }
+  .rounded-full {
+    border-radius: 9999px;
+  }
+  .text-white {
+    color: #ffffff;
+  }
+</style>

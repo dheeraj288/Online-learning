@@ -1,12 +1,55 @@
-<div class="flex flex-col justify-start items-center w-full">
-  <p style="color: green"><%= notice %></p>
+<div class="flex flex-col justify-start items-center w-full p-6 rounded-lg">
+  <p class="text-green-600 font-semibold mb-4"><%= notice %></p>
 
   <%= render @admin_lesson %>
 
-  <div class="mt-4 flex justify-center items-center gap-2">
-    <%= link_to "Edit this lesson", edit_admin_course_lesson_path(@admin_course, @admin_lesson), class: "bg-red-500 hover:bg-red-600 cursor-pointer px-4 py-2 rounded text-white-50" %>
-    <%= link_to "Back to lessons", admin_course_lessons_path, class: "bg-blue-500 hover:bg-blue-600 cursor-pointer px-4 py-2 rounded text-gray-50" %>
+  <div class="mt-6 flex justify-center items-center gap-4">
+    <%= link_to "Edit this lesson", edit_admin_course_lesson_path(@admin_course, @admin_lesson), class: "bg-red-500 hover:bg-red-600 cursor-pointer px-6 py-2 rounded-full text-white font-semibold transition duration-300 ease-in-out shadow-md" %>
+    <%= link_to "Back to lessons", admin_course_lessons_path(@admin_course), class: "bg-blue-500 hover:bg-blue-600 cursor-pointer px-6 py-2 rounded-full text-white font-semibold transition duration-300 ease-in-out shadow-md" %>
 
-    <%= button_to "Destroy this lesson", [:admin, @admin_course, @admin_lesson], method: :delete, class: "bg-red-500 hover:bg-red-600 cursor-pointer px-4 py-2 rounded text-gray-50", data: {'turbo-confirm': "Are you sure?"} %>
+    <%= button_to "Destroy this lesson", [:admin, @admin_course, @admin_lesson], method: :delete, class: "bg-red-500 hover:bg-red-600 cursor-pointer px-6 py-2 rounded-full text-white font-semibold transition duration-300 ease-in-out shadow-md", data: {'turbo-confirm': "Are you sure?"} %>
   </div>
 </div>
+
+<style>
+  .text-green-600 {
+    color: #38a169;
+  }
+  
+  .text-white {
+    color: #ffffff;
+  }
+  .font-semibold {
+    font-weight: 600;
+  }
+  .bg-red-500 {
+    background-color: #f56565;
+  }
+  .hover\:bg-red-600:hover {
+    background-color: #e53e3e;
+  }
+  .bg-blue-500 {
+    background-color: #4299e1;
+  }
+  .hover\:bg-blue-600:hover {
+    background-color: #3182ce;
+  }
+  .rounded-full {
+    border-radius: 9999px;
+  }
+  .shadow-md {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  .transition {
+    transition: all 0.3s ease;
+  }
+  .duration-300 {
+    transition-duration: 300ms;
+  }
+  .ease-in-out {
+    transition-timing-function: ease-in-out;
+  }
+  .cursor-pointer {
+    cursor: pointer;
+  }
+</style>

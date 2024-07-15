@@ -1,32 +1,32 @@
-<header class="hidden sm:flex w-full justify-center items-center text-gray-700 py-6 px-5">
+<header class="hidden sm:flex w-full justify-center items-center text-gray-700 py-6 px-5 bg-white shadow">
   <div class="container mx-auto flex justify-between items-center">
-    <div class="flex">
+    <div class="flex space-x-4">
       <div>
-        <%= link_to "Dashboard", admin_path, class: "hover:bg-red-500 hover:text-gray-50 rounded py-2 px-4" %>
+        <%= link_to "Dashboard", admin_path, class: "hover:bg-red-500 hover:text-white rounded py-2 px-4 transition duration-300" %>
       </div>
       <div>
-        <%= link_to "Courses", admin_courses_path, class: "hover:bg-red-500 hover:text-gray-50 rounded py-2 px-4" %>
+        <%= link_to "Courses", admin_courses_path, class: "hover:bg-red-500 hover:text-white rounded py-2 px-4 transition duration-300" %>
       </div>
       <div>
-        <%= link_to "Users", admin_users_path, class: "hover:bg-red-500 hover:text-gray-50 rounded py-2 px-4" %>
+        <%= link_to "Users", admin_users_path, class: "hover:bg-red-500 hover:text-white rounded py-2 px-4 transition duration-300" %>
       </div>
     </div>
     <div>
       <%= link_to admin_path do %>
-        <% image_tag "logo.jpg", class: "h-12" %> 
+        <%= image_tag "logo.jpg", class: "h-12" %> 
       <% end %>
     </div>
-    <div class="flex">
+    <div class="flex space-x-4">
       <% if user_signed_in? %>
-        <%= link_to "Sign Out", destroy_user_session_path, data: { 'turbo_method' => :delete, 'turbo_confirm' => "Are you sure?" }, class: "hover:bg-red-500 hover:text-gray-50 rounded py-2 px-4" %>
+        <%= link_to "Sign Out", destroy_user_session_path, data: { 'turbo_method' => :delete, 'turbo_confirm' => "Are you sure?" }, class: "hover:bg-red-500 hover:text-white rounded py-2 px-4 transition duration-300" %>
       <% else %>
-        <%= link_to "Sign In", new_user_session_path, class: "hover:bg-red-500 hover:text-gray-50 rounded py-2 px-4" %>
+        <%= link_to "Sign In", new_user_session_path, class: "hover:bg-red-500 hover:text-white rounded py-2 px-4 transition duration-300" %>
       <% end %>
     </div>
   </div>
 </header>
 
-<header data-controller="navbar" class="bg-red-500 sm:hidden w-full py-4 px-5 text-gray-50">
+<header data-controller="navbar" class="bg-red-500 sm:hidden w-full py-4 px-5 text-white shadow">
   <div class="flex justify-between items-center">
     <div>
       <%= link_to admin_path do %>
@@ -34,10 +34,10 @@
       <% end %>
     </div>
     <div class="p-4">
-      <button data-action="click->navbar#toggle" id="bars" type="button" class="w-full flex justify-end items-center">
+      <button data-action="click->navbar#toggle" id="bars" type="button" class="w-full flex justify-end items-center text-white">
         <%= icon('fa-solid', 'bars') %>
       </button>
-      <button data-action="click->navbar#toggle" id="close" type="button" class="hidden w-full flex justify-end items-center">
+      <button data-action="click->navbar#toggle" id="close" type="button" class="hidden w-full flex justify-end items-center text-white">
         <%= icon('fa-solid', 'x') %>
       </button>
     </div>
@@ -45,19 +45,58 @@
 
   <div id="mobile-links" class="hidden border-t-2 border-red-400 flex flex-col w-full justify-center items-center">
     <div class="mt-4">
-      <%= link_to "Dashboard", admin_path, class: "hover:bg-red-700 rounded py-2 px-4" %>
+      <%= link_to "Dashboard", admin_path, class: "hover:bg-red-700 rounded py-2 px-4 transition duration-300" %>
     </div>
     <div class="mt-4">
-      <%= link_to "Courses", admin_courses_path, class: "hover:bg-red-700 rounded py-2 px-4" %>
+      <%= link_to "Courses", admin_courses_path, class: "hover:bg-red-700 rounded py-2 px-4 transition duration-300" %>
     </div>
     <div class="mt-4">
-      <%= link_to "User", admin_users_path, class: "hover:bg-red-700 rounded py-2 px-4" %>
+      <%= link_to "Users", admin_users_path, class: "hover:bg-red-700 rounded py-2 px-4 transition duration-300" %>
     </div>
 
     <% if user_signed_in? %>
-      <%= link_to "Sign Out", destroy_user_session_path, data: { 'turbo_method' => :delete, 'turbo_confirm' => "Are you sure?" }, class: "hover:bg-red-500 hover:text-gray-50 rounded py-2 px-4" %>
+      <%= link_to "Sign Out", destroy_user_session_path, data: { 'turbo_method' => :delete, 'turbo_confirm' => "Are you sure?" }, class: "hover:bg-red-700 rounded py-2 px-4 transition duration-300" %>
     <% else %>
-      <%= link_to "Sign In", new_user_session_path, class: "hover:bg-red-500 hover:text-gray-50 rounded py-2 px-4" %>
+      <%= link_to "Sign In", new_user_session_path, class: "hover:bg-red-700 rounded py-2 px-4 transition duration-300" %>
     <% end %>
   </div>
 </header>
+
+<style>
+  .transition {
+    transition: all 0.3s ease;
+  }
+  .duration-300 {
+    transition-duration: 300ms;
+  }
+  .hover\:bg-red-500:hover {
+    background-color: #f56565;
+  }
+  .hover\:bg-red-700:hover {
+    background-color: #c53030;
+  }
+  .hover\:text-white:hover {
+    color: #ffffff;
+  }
+  .rounded {
+    border-radius: 0.25rem;
+  }
+  .shadow {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  .bg-white {
+    background-color: #ffffff;
+  }
+  .bg-red-500 {
+    background-color: #f56565;
+  }
+  .text-gray-700 {
+    color: #4a5568;
+  }
+  .text-white {
+    color: #ffffff;
+  }
+  .space-x-4 > * + * {
+    margin-left: 1rem;
+  }
+</style>

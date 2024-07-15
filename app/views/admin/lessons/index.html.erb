@@ -1,19 +1,70 @@
 <div class="flex flex-col w-full">
 
   <div class="mb-10"> 
-    <p style="color: green"><%= notice %></p>
-    <h1 class="mb-4 font-bold text-2xl"><%= @admin_course.title %> Lessons</h1>
-    <%= link_to "New Lesson", new_admin_course_lesson_path(@admin_course), class: "bg-red-500 hover:bg-red-600 text-gray-50 rounded px-4 py-2" %>
+    <p class="text-green-600 font-semibold"><%= notice %></p>
+    <h1 class="mb-6 font-bold text-4xl text-gray-900"><%= @admin_course.title %> Lessons</h1>
+    <%= link_to "New Lesson", new_admin_course_lesson_path(@admin_course), class: "bg-blue-500 hover:bg-blue-600 text-white rounded-full px-6 py-3 transition duration-300 ease-in-out shadow-lg" %>
   </div>
 
-  <div data-controller="lesson" data-lesson-course-value="<%= @admin_course.id %>" data-sortable-animation-value="150" id="admin_lessons" class="flex flex-col flex-wrap justify-center lg:justify-start items-center lg:flex-row w-full gap-5 pb-4">
+  <div data-controller="lesson" data-lesson-course-value="<%= @admin_course.id %>" data-sortable-animation-value="150" id="admin_lessons" class="flex flex-col flex-wrap justify-center lg:justify-start items-center lg:flex-row w-full gap-8 pb-8">
     <% @admin_lessons.each do |admin_lesson| %>
-      <div class="max-w-xs" id="<%= admin_lesson.id %>">
-      <%= link_to [:admin, @admin_course, admin_lesson] do %>
-        <%= render admin_lesson %>
-      <% end %>
+      <div class="max-w-xs bg-white rounded-lg shadow-md overflow-hidden transform transition duration-300 hover:scale-105 hover:shadow-xl" id="<%= admin_lesson.id %>">
+        <%= link_to [:admin, @admin_course, admin_lesson] do %>
+          <%= render admin_lesson %>
+        <% end %>
       </div>
     <% end %>
   </div>
 
 </div>
+
+<style>
+  .text-green-600 {
+    color: #38a169;
+  }
+  .text-gray-900 {
+    color: #1a202c;
+  }
+  .bg-white {
+    background-color: #ffffff;
+  }
+  .rounded-lg {
+    border-radius: 0.5rem;
+  }
+  .shadow-md {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  .overflow-hidden {
+    overflow: hidden;
+  }
+  .rounded-full {
+    border-radius: 9999px;
+  }
+  .transition {
+    transition: all 0.3s ease;
+  }
+  .duration-300 {
+    transition-duration: 300ms;
+  }
+  .ease-in-out {
+    transition-timing-function: ease-in-out;
+  }
+  .hover\:scale-105:hover {
+    transform: scale(1.05);
+  }
+  .shadow-lg {
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+  }
+  .hover\:shadow-xl:hover {
+    box-shadow: 0 20px 25px rgba(0, 0, 0, 0.2);
+  }
+  .bg-blue-500 {
+    background-color: #4299e1;
+  }
+  .hover\:bg-blue-600:hover {
+    background-color: #3182ce;
+  }
+  .text-white {
+    color: #ffffff;
+  }
+</style>
